@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController{
@@ -37,5 +39,11 @@ public class UserController{
     @ResponseBody
     public User updateUser(@PathVariable String userId,@RequestBody RegisterDto registerDto) {
         return userService.updateUser(userId, registerDto);
+    }
+
+    @GetMapping("/getAll")
+    @ResponseBody
+    public List<User> findAllUsers() {
+        return userService.findALLUsers();
     }
 }

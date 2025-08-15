@@ -16,4 +16,6 @@ public interface UserRepository {
 
     User updateUser(String id, RegisterDto dto);
 
+    List<User> findAllUsers(); // New method to retrieve all users
+
 }

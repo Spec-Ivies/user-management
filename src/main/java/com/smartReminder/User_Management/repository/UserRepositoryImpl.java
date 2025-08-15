@@ -4,7 +4,9 @@ import com.smartReminder.User_Management.dto.RegisterDto;
 import com.smartReminder.User_Management.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -34,14 +36,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(String id) {
-        User user  = userHashMap.get(id);
+        User user = userHashMap.get(id);
         return user;
     }
 
     @Override
     public User findByEmail(String id, String email) {
         User user = userHashMap.get(id);
-        if(email.equals(user.getEmailAddress())){
+        if (email.equals(user.getEmailAddress())) {
             return user;
         }
         return null;
@@ -55,4 +57,10 @@ public class UserRepositoryImpl implements UserRepository {
         userHashMap.put(id, user);
         return user;
     }
-}
+
+    public List<User> findAllUsers() {
+        return userHashMap.values().stream().toList() ;
+        };
+    }
+
+
